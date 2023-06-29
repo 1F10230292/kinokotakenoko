@@ -9,9 +9,10 @@ def top():
 
 @app.route('/vote', methods=['POST'])
 def answer():
-    return render_template('vote.html', **vars())
     kinoko_percent = kinoko_count / (kinoko_count + takenoko_count) * 100
     takenoko_percent = takenoko_count / (kinoko_count + takenoko_count) * 100
+
+    return render_template('vote.html', **vars())
 
 if __name__ == '__main__':
     app.run(debug=True)
