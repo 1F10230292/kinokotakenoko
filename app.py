@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request
 app = Flask(__name__)
-
+kinoko_count = 3
+takenoko_count = 5
+messages = ['Kinoko is wonrderful!', 'Takenoko is awesome!']
 @app.route('/')
 def top():
     return render_template('index.html', **vars())
@@ -8,6 +10,8 @@ def top():
 @app.route('/vote', methods=['POST'])
 def answer():
     return render_template('vote.html', **vars())
+    kinoko_percent = kinoko_count / (kinoko_count + takenoko_count) * 100
+    takenoko_percent = takenoko_count / (kinoko_count + takenoko_count) * 100
 
 if __name__ == '__main__':
     app.run(debug=True)
